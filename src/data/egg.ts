@@ -14,11 +14,6 @@ import {
   GACHA_EGG_HA_RATE,
   GACHA_LEGENDARY_UP_THRESHOLD_OFFSET,
   GACHA_SHINY_UP_SHINY_RATE,
-  HATCH_WAVES_COMMON_EGG,
-  HATCH_WAVES_EPIC_EGG,
-  HATCH_WAVES_LEGENDARY_EGG,
-  HATCH_WAVES_MANAPHY_EGG,
-  HATCH_WAVES_RARE_EGG,
   MANAPHY_EGG_MANAPHY_RATE,
   RARE_EGGMOVE_RATES,
   SAME_SPECIES_EGG_HA_RATE,
@@ -366,19 +361,8 @@ export class Egg {
   }
 
   private getEggTierDefaultHatchWaves(eggTier?: EggTier): number {
-    if (this._species === SpeciesId.PHIONE || this._species === SpeciesId.MANAPHY) {
-      return HATCH_WAVES_MANAPHY_EGG;
-    }
-
-    switch (eggTier ?? this._tier) {
-      case EggTier.COMMON:
-        return HATCH_WAVES_COMMON_EGG;
-      case EggTier.RARE:
-        return HATCH_WAVES_RARE_EGG;
-      case EggTier.EPIC:
-        return HATCH_WAVES_EPIC_EGG;
-    }
-    return HATCH_WAVES_LEGENDARY_EGG;
+    // All newly generated eggs are forced to require only 1 wave to hatch
+    return 1;
   }
 
   private rollEggTier(): EggTier {
@@ -624,7 +608,7 @@ export function getLegendaryGachaSpeciesForTimestamp(timestamp: number): Species
 
 /**
  * Check for a given species EggTier Value
- * @param pokemonSpecies - Species for wich we will check the egg tier it belongs to
+ * @param pokemonSpecies - Species for which we will check the egg tier it belongs to
  * @returns The egg tier of a given pokemon species
  */
 export function getEggTierForSpecies(pokemonSpecies: PokemonSpecies): EggTier {
