@@ -175,10 +175,10 @@ export class GameData {
     this.achvUnlocks = {};
     this.voucherUnlocks = {};
     this.voucherCounts = {
-      [VoucherType.REGULAR]: 0,
-      [VoucherType.PLUS]: 0,
-      [VoucherType.PREMIUM]: 0,
-      [VoucherType.GOLDEN]: 0,
+      [VoucherType.REGULAR]: 999,
+      [VoucherType.PLUS]: 999,
+      [VoucherType.PREMIUM]: 999,
+      [VoucherType.GOLDEN]: 999,
     };
     this.eggs = [];
     this.eggPity = [0, 0, 0, 0];
